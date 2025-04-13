@@ -1,0 +1,46 @@
+<!-- Service Modals -->
+<div class="modal" id="sktm-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Permohonan SKTM</h3>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="sktm-name">Nama Lengkap</label>
+                    <input type="text" id="sktm-name" placeholder="Masukkan nama lengkap">
+                </div>
+                
+                <div class="form-group">
+                    <label for="sktm-nik">NIK</label>
+                    <input type="text" id="sktm-nik" placeholder="Masukkan NIK">
+                </div>
+                
+                <div class="form-group">
+                    <label for="sktm-address">Alamat Lengkap</label>
+                    <textarea id="sktm-address" placeholder="Masukkan alamat lengkap"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sktm-purpose">Tujuan Pembuatan</label>
+                    <select id="sktm-purpose">
+                        <option value="">Pilih tujuan pembuatan</option>
+                        <option value="sekolah">Pendaftaran Sekolah</option>
+                        <option value="pengobatan">Bantuan Pengobatan</option>
+                        <option value="lainnya">Lainnya</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Upload Dokumen Pendukung</label>
+                    <input type="file" style="padding: 5px;">
+                    <small style="display: block; margin-top: 5px; color: var(--gray);">(KK, KTP, atau dokumen pendukung lainnya)</small>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn">Kirim Permohonan</button>
+        </div>
+    </div>
+</div>

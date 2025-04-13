@@ -1,0 +1,62 @@
+<!-- Complaint Button -->
+<a href="#" class="complaint-button" id="complaintBtn">
+    <i class="fas fa-comment-dots"></i>
+    <span>!</span>
+</a>
+
+<!-- Back to Top Button -->
+<a href="#beranda" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</a>
+
+<!-- Complaint Modal -->
+<div class="modal" id="complaintModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Formulir Pengaduan</h3>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" placeholder="Masukkan nama lengkap">
+                </div>
+                
+                <div class="form-group">
+                    <label for="nik">NIK</label>
+                    <input type="text" id="nik" placeholder="Masukkan NIK">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Masukkan email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Nomor Telepon</label>
+                    <input type="tel" id="phone" placeholder="Masukkan nomor telepon">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subjek Pengaduan</label>
+                    <select id="subject">
+                        <option value="">Pilih subjek pengaduan</option>
+                        <option value="infrastruktur">Infrastruktur Desa</option>
+                        <option value="pelayanan">Pelayanan Publik</option>
+                        <option value="sosial">Masalah Sosial</option>
+                        <option value="lainnya">Lainnya</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Isi Pengaduan</label>
+                    <textarea id="message" placeholder="Jelaskan pengaduan Anda secara detail"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn">Kirim Pengaduan</button>
+        </div>
+    </div>
+</div>

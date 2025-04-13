@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desa Wani Tiga - Kabupaten XXX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a5d1a;
+            --secondary: #f8b400;
+            --accent: #4e9f3d;
+            --light: #f7f7f7;
+            --dark: #333;
+            --gray: #6c757d;
+        }
+        
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #0f3d0f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0a800;
+            color: var(--dark);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            color: var(--primary);
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .animate {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), #2e8b57);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(26, 93, 26, 0.95);
+            backdrop-filter: blur(5px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .logo-img {
+            height: 60px;
+            width: 60px;
+            margin-right: 15px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 3px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .logo-img img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+        }
+        
+        .logo:hover .logo-img {
+            transform: rotate(15deg);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation Styles */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: calc(100% - 30px);
+        }
+        
+        nav ul li a.active {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1586771107445-d3ca888129ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, var(--light));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: fadeIn 1s ease 0.3s forwards;
+        }
+        
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5rem;
+            animation: float 2s ease-in-out infinite;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        /* Main Content Styles */
+        .main-section {
+            padding: 80px 0;
+            display: none; /* Semua section disembunyikan secara default */
+        }
+        
+        .main-section.active {
+            display: block; /* Hanya section aktif yang ditampilkan */
+        }
+        
+        .main-section:nth-child(even) {
+            background-color: white;
+        }
+        
+        /* Profil Section */
+        .history-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .history-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .history-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--secondary);
+        }
+        
+        .vision-mission {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .vision-box, .mission-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .vision-box:hover, .mission-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .vision-box {
+            background: linear-gradient(135deg, var(--primary), #2e8b57);
+            color: white;
+        }
+        
+        .vision-box h3, .mission-box h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .facilities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .facility-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .facility-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .facility-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .facility-card:hover .facility-img img {
+            transform: scale(1.1);
+        }
+        
+        .facility-content {
+            padding: 20px;
+        }
+        
+        .facility-content h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .map-container {
+            height: 400px;
+            background-color: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Pemerintah Section */
+        .structure {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        
+        .structure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .structure img:hover {
+            transform: scale(1.02);
+        }
+        
+        .institutions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .institution-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .institution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .institution-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .institution-card h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        /* Berita Section */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .news-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-img img {
+            transform: scale(1.1);
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .news-date i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+        
+        .news-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .news-content p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .read-more {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+        
+        .read-more:hover {
+            color: var(--accent);
+        }
+        
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Infografis Section */
+        .infographic-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .infographic-tab {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .infographic-tab:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .infographic-tab.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .infographic-content {
+            display: none;
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .infographic-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .data-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .data-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .data-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        /* Layanan Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-card p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, var(--primary), #1a3e1a);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Complaint Button */
+        .complaint-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #e74c3c;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.3);
+            z-index: 100;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .complaint-button:hover {
+            background-color: #c0392b;
+            transform: scale(1.1);
+        }
+        
+        .complaint-button span {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--secondary);
+            color: var(--dark);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background-color: white;
+            max-width: 600px;
+            margin: 50px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .modal-footer {
+            padding: 20px;
+            background-color: #f9f9f9;
+            text-align: right;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                clip-path: circle(0px at 90% -10%);
+                transition: all 0.5s ease-out;
+                pointer-events: none;
+            }
+            
+            nav.active {
+                clip-path: circle(1000px at 90% -10%);
+                pointer-events: all;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            nav ul li a {
+                padding: 15px 30px;
+            }
+            
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                min-height: 500px;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-btns .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .infographic-tabs {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .complaint-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#beranda" class="logo">
+                <div class="logo-img float">
+                    <img src="/images/welcome.jpg" alt="Logo Desa Wani Tiga">
+                </div>
+                <div class="logo-text">
+                    <h1>DESA WANI TIGA</h1>
+                    <p>Kabupaten XXX, Provinsi XXX</p>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#beranda" class="active">Beranda</a></li>
+                    <li><a href="#profil">Profil</a></li>
+                    <li><a href="#pemerintah">Pemerintah</a></li>
+                    <li><a href="#berita">Berita</a></li>
+                    <li><a href="#infografis">Infografis</a></li>
+                    <li><a href="#layanan">Layanan</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="beranda">
+        <div class="hero-content">
+            <h2>Selamat Datang di Desa Wani Tiga</h2>
+            <p>Desa yang maju, mandiri, dan sejahtera berbasis partisipasi masyarakat</p>
+            
+            <div class="hero-btns">
+                <a href="#profil" class="btn">Tentang Kami</a>
+                <a href="#layanan" class="btn btn-secondary">Layanan Desa</a>
+            </div>
+        </div>
+        
+        <a href="#profil" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Beranda Section -->
+        <section class="main-section active" id="beranda-section">
+            <div class="container">
+                <h2 class="section-title animate">Beranda</h2>
+                
+                <div class="history-card animate" style="animation-delay: 0.2s;">
+                    <h3>Selamat Datang di Website Resmi Desa Wani Tiga</h3>
+                    <p>Website ini merupakan media informasi dan komunikasi antara Pemerintah Desa dengan masyarakat. Melalui website ini, kami berharap dapat menyampaikan informasi terbaru seputar kegiatan, program, dan layanan desa.</p>
+                    <p>Desa Wani Tiga merupakan salah satu desa di Kecamatan XXX yang memiliki potensi besar di bidang pertanian dan UMKM. Dengan semangat gotong royong, kami terus berupaya membangun desa yang lebih baik untuk kesejahteraan bersama.</p>
+                </div>
+                
+                <h3 class="animate" style="animation-delay: 0.3s;">Pengumuman Terkini</h3>
+                
+                <div class="news-grid">
+                    <div class="news-card animate" style="animation-delay: 0.4s;">
+                        <div class="news-img">
+                            <img src="/images/belajar.jpg" alt="Pengumuman">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">
+                                <i class="far fa-calendar-alt"></i> 15 Mei 2023
+                            </div>
+                            <h3>Pendaftaran Bantuan Sosial Tahap II</h3>
+                            <p>Pendaftaran Bantuan Sosial Tahap II dibuka mulai 1-10 Juni 2023...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card animate" style="animation-delay: 0.5s;">
+                        <div class="news-img">
+                            <img src="/images/supgraf.png" alt="Pengumuman">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">
+                                <i class="far fa-calendar-alt"></i> 10 Mei 2023
+                            </div>
+                            <h3>Jadwal Posyandu Bulan Juni</h3>
+                            <p>Pelaksanaan Posyandu bulan Juni 2023 akan dilaksanakan pada tanggal 15 Juni...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card animate" style="animation-delay: 0.6s;">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pengumuman">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">
+                                <i class="far fa-calendar-alt"></i> 1 Mei 2023
+                            </div>
+                            <h3>Kerja Bakti Desa</h3>
+                            <p>Pelaksanaan kerja bakti desa pada hari Minggu, 4 Juni 2023 di seluruh wilayah Desa Wani Tiga...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Profil Section -->
+        <section class="main-section" id="profil-section">
+            <div class="container">
+                <h2 class="section-title animate">Profil Desa</h2>
+                
+                <div class="history-card animate" style="animation-delay: 0.2s;">
+                    <h3>Sejarah Desa</h3>
+                    <p>Desa Wani Tiga berdiri pada tahun 1920 dengan sejarah panjang sebagai pusat pertanian di wilayah ini. Nama "Wani Tiga" berasal dari bahasa daerah yang berarti "berani bertiga", merujuk pada tiga tokoh pendiri desa yang berani membuka pemukiman di daerah ini. Ketiga tokoh tersebut adalah Mbah Kromo, Mbah Suto, dan Mbah Rejo yang bekerja sama membuka lahan dan membangun pemukiman pertama di daerah ini.</p>
+                    <p>Pada awalnya, Desa Wani Tiga hanya terdiri dari beberapa rumah penduduk yang bermata pencaharian sebagai petani. Seiring berjalannya waktu, desa ini berkembang pesat menjadi pusat pertanian yang subur dengan hasil bumi melimpah.</p>
+                </div>
+                
+                <div class="vision-mission">
+                    <div class="vision-box animate" style="animation-delay: 0.3s;">
+                        <h3><i class="fas fa-eye mr-2"></i> Visi Desa</h3>
+                        <p>"Terwujudnya Desa Wani Tiga yang Maju, Mandiri, dan Sejahtera Berbasis Partisipasi Masyarakat"</p>
+                    </div>
+                    
+                    <div class="mission-box animate" style="animation-delay: 0.4s;">
+                        <h3><i class="fas fa-bullseye mr-2"></i> Misi Desa</h3>
+                        <ol>
+                            <li>Meningkatkan kualitas sumber daya manusia</li>
+                            <li>Mengembangkan potensi ekonomi lokal</li>
+                            <li>Meningkatkan infrastruktur dasar</li>
+                            <li>Menguatkan tata kelola pemerintahan</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <h3 class="animate" style="animation-delay: 0.5s;">Fasilitas Umum</h3>
+                
+                <div class="facilities">
+                    <div class="facility-card animate" style="animation-delay: 0.6s;">
+                        <div class="facility-img">
+                            <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kantor Desa">
+                        </div>
+                        <div class="facility-content">
+                            <h4>Kantor Desa</h4>
+                            <p>Jl. Raya Wani Tiga No. 1, Kec. XXX, Kab. XXX</p>
+                        </div>
+                    </div>
+                    
+                    <div class="facility-card animate" style="animation-delay: 0.7s;">
+                        <div class="facility-img">
+                            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Sekolah">
+                        </div>
+                        <div class="facility-content">
+                            <h4>Sekolah</h4>
+                            <p>SD Negeri 1 Wani Tiga dan PAUD Melati</p>
+                        </div>
+                    </div>
+                    
+                    <div class="facility-card animate" style="animation-delay: 0.8s;">
+                        <div class="facility-img">
+                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1493&q=80" alt="Lapangan">
+                        </div>
+                        <div class="facility-content">
+                            <h4>Lapangan</h4>
+                            <p>Lapangan Serba Guna Wani Tiga</p>
+                        </div>
+                    </div>
+                    
+                    <div class="facility-card animate" style="animation-delay: 0.9s;">
+                        <div class="facility-img">
+                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Puskesdes">
+                        </div>
+                        <div class="facility-content">
+                            <h4>Puskesdes</h4>
+                            <p>Puskesmas Pembantu Wani Tiga</p>
+                        </div>
+                    </div>
+                    
+                    <div class="facility-card animate" style="animation-delay: 1s;">
+                        <div class="facility-img">
+                            <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1494&q=80" alt="Masjid">
+                        </div>
+                        <div class="facility-content">
+                            <h4>Masjid</h4>
+                            <p>Masjid Al-Ikhlas Wani Tiga</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="animate" style="animation-delay: 1.1s; margin-top: 40px;">Peta Wilayah</h3>
+                
+                <div class="map-container animate" style="animation-delay: 1.2s;">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3161.4416319706047!2d119.84910329609484!3d-0.6645954379511316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d8bc786a3063389%3A0xb77048135298fa4f!2sKantor%20Desa%20Wani%20Tiga!5e1!3m2!1sid!2sid!4v1743649916894!5m2!1sid!2sid"
+                    width="400"
+                    height="300"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pemerintah Section -->
+        <section class="main-section" id="pemerintah-section" style="background-color: #f9f9f9;">
+            <div class="container">
+                <h2 class="section-title animate">Pemerintah Desa</h2>
+                
+                <h3 class="animate" style="animation-delay: 0.2s;">Struktur Pemerintahan Desa</h3>
+                
+                <div class="structure animate" style="animation-delay: 0.3s;">
+                    <img src="https://via.placeholder.com/800x500?text=Struktur+Pemerintahan+Desa" alt="Struktur Pemerintahan Desa">
+                </div>
+                
+                <h3 class="animate" style="animation-delay: 0.4s;">Lembaga Desa</h3>
+                
+                <div class="institutions">
+                    <div class="institution-card animate" style="animation-delay: 0.5s;">
+                        <div class="institution-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h4>Badan Permusyawaratan Desa (BPD)</h4>
+                        <p>Ketua: Bapak Ahmad Sudirman<br>Anggota: 5 orang</p>
+                        <a href="#" class="btn" style="margin-top: 15px; padding: 8px 15px; font-size: 0.9rem;">Detail</a>
+                    </div>
+                    
+                    <div class="institution-card animate" style="animation-delay: 0.6s;">
+                        <div class="institution-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                        <h4>PKK Desa</h4>
+                        <p>Ketua: Ibu Siti Aminah<br>Anggota: 15 orang</p>
+                        <a href="#" class="btn" style="margin-top: 15px; padding: 8px 15px; font-size: 0.9rem;">Detail</a>
+                    </div>
+                    
+                    <div class="institution-card animate" style="animation-delay: 0.7s;">
+                        <div class="institution-icon">
+                            <i class="fas fa-drum"></i>
+                        </div>
+                        <h4>Lembaga Adat</h4>
+                        <p>Ketua: Bapak Mulyono<br>Anggota: 7 orang</p>
+                        <a href="#" class="btn" style="margin-top: 15px; padding: 8px 15px; font-size: 0.9rem;">Detail</a>
+                    </div>
+                    
+                    <div class="institution-card animate" style="animation-delay: 0.8s;">
+                        <div class="institution-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Pegawai Saran</h4>
+                        <p>Kepala Urusan: Bapak Joko Susilo<br>Staf: 3 orang</p>
+                        <a href="#" class="btn" style="margin-top: 15px; padding: 8px 15px; font-size: 0.9rem;">Detail</a>
+                    </div>
+                    
+                    <div class="institution-card animate" style="animation-delay: 0.9s;">
+                        <div class="institution-icon">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <h4>Majelis Ta'lim</h4>
+                        <p>Ketua: Ustadz Hasan Basri<br>Anggota: 30 orang</p>
+                        <a href="#" class="btn" style="margin-top: 15px; padding: 8px 15px; font-size: 0.9rem;">Detail</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Berita Section -->
+        <section class="main-section" id="berita-section">
+            <div class="container">
+                <h2 class="section-title animate">Berita & Kegiatan</h2>
+                
+                <div class="news-grid">
+                    <div class="news-card animate" style="animation-delay: 0.2s;">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kegiatan Posyandu">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">
+                                <i class="far fa-calendar-alt"></i> 15 Mei 2023
+                            </div>
+                            <h3>Pelaksanaan Posyandu Bulan Mei 2023</h3>
+                            <p>Posyandu Melati Desa Wani Tiga telah melaksanakan kegiatan rutin bulanan dengan cakupan peserta 85 balita...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card animate" style="animation-delay: 0.3s;">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kerja Bakti">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">
+                                <i class="far fa-calendar-alt"></i> 5 Mei 2023
+                            </div>
+                            <h3>Kerja Bakti Bersihkan Saluran Air</h3>
+                            <p>Masyarakat Dusun 2 Desa Wani Tiga bergotong royong membersihkan saluran air untuk antisipasi musim hujan...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card animate" style="animation-delay: 0.4s;">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pelatihan UMKM">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">
+                                <i class="far fa-calendar-alt"></i> 28 April 2023
+                            </div>
+                            <h3>Pelatihan Pengolahan Hasil Pertanian</h3>
+                            <p>Dinas Pertanian Kabupaten memberikan pelatihan pengolahan hasil pertanian kepada kelompok tani Desa Wani Tiga...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#" class="btn">Lihat Berita Lainnya</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Infografis Section -->
+        <section class="main-section" id="infografis-section" style="background-color: #f9f9f9;">
+            <div class="container">
+                <h2 class="section-title animate">Infografis Desa</h2>
+                
+                <div class="infographic-tabs animate" style="animation-delay: 0.2s;">
+                    <div class="infographic-tab active" data-tab="penduduk">Data Penduduk</div>
+                    <div class="infographic-tab" data-tab="apbdes">APBDesa</div>
+                    <div class="infographic-tab" data-tab="stunting">Stunting Data</div>
+                    <div class="infographic-tab" data-tab="bansos">Bantuan Sosial</div>
+                    <div class="infographic-tab" data-tab="sdgs">SDGs Desa</div>
+                </div>
+                
+                <div id="penduduk-content" class="infographic-content active animate" style="animation-delay: 0.3s;">
+                    <h3>Data Penduduk Desa Wani Tiga (2023)</h3>
+                    <table class="data-table">
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Jumlah</th>
+                        </tr>
+                        <tr>
+                            <td>Total Penduduk</td>
+                            <td>3.245 jiwa</td>
+                        </tr>
+                        <tr>
+                            <td>Laki-laki</td>
+                            <td>1.620 jiwa</td>
+                        </tr>
+                        <tr>
+                            <td>Perempuan</td>
+                            <td>1.625 jiwa</td>
+                        </tr>
+                        <tr>
+                            <td>Kepala Keluarga</td>
+                            <td>850 KK</td>
+                        </tr>
+                    </table>
+                    
+                    <h4 style="margin-top: 30px;">Penduduk Berdasarkan Dusun</h4>
+                    <table class="data-table">
+                        <tr>
+                            <th>Dusun</th>
+                            <th>Jumlah Penduduk</th>
+                            <th>KK</th>
+                        </tr>
+                        <tr>
+                            <td>Dusun 1</td>
+                            <td>1.120 jiwa</td>
+                            <td>290 KK</td>
+                        </tr>
+                        <tr>
+                            <td>Dusun 2</td>
+                            <td>980 jiwa</td>
+                            <td>260 KK</td>
+                        </tr>
+                        <tr>
+                            <td>Dusun 3</td>
+                            <td>1.145 jiwa</td>
+                            <td>300 KK</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div id="apbdes-content" class="infographic-content">
+                    <h3>APBDesa Tahun 2023</h3>
+                    <table class="data-table">
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Jumlah (Rp)</th>
+                        </tr>
+                        <tr>
+                            <td>Pendapatan Desa</td>
+                            <td>1.250.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Belanja Desa</td>
+                            <td>1.150.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Pembiayaan</td>
+                            <td>100.000.000</td>
+                        </tr>
+                    </table>
+                    
+                    <h4 style="margin-top: 30px;">Sumber Pendapatan</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Dana Desa: Rp 950.000.000</li>
+                        <li>PADes: Rp 200.000.000</li>
+                        <li>Bagi Hasil Pajak: Rp 50.000.000</li>
+                        <li>Lain-lain: Rp 50.000.000</li>
+                    </ul>
+                </div>
+                
+                <div id="stunting-content" class="infographic-content">
+                    <h3>Data Stunting Desa Wani Tiga (2023)</h3>
+                    <table class="data-table">
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Jumlah</th>
+                        </tr>
+                        <tr>
+                            <td>Balita</td>
+                            <td>245 anak</td>
+                        </tr>
+                        <tr>
+                            <td>Kasus Stunting</td>
+                            <td>18 anak (7,3%)</td>
+                        </tr>
+                        <tr>
+                            <td>Dalam Pemantauan</td>
+                            <td>12 anak</td>
+                        </tr>
+                    </table>
+                    
+                    <h4 style="margin-top: 30px;">Intervensi yang Dilakukan</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Pemberian makanan tambahan</li>
+                        <li>Pendampingan keluarga</li>
+                        <li>Edukasi gizi</li>
+                        <li>Pemantauan rutin</li>
+                    </ul>
+                </div>
+                
+                <div id="bansos-content" class="infographic-content">
+                    <h3>Data Bantuan Sosial Desa Wani Tiga (2023)</h3>
+                    <table class="data-table">
+                        <tr>
+                            <th>Jenis Bantuan</th>
+                            <th>Penerima</th>
+                        </tr>
+                        <tr>
+                            <td>PKH</td>
+                            <td>75 KK</td>
+                        </tr>
+                        <tr>
+                            <td>BLT Desa</td>
+                            <td>150 KK</td>
+                        </tr>
+                        <tr>
+                            <td>Bantuan Sembako</td>
+                            <td>200 KK</td>
+                        </tr>
+                        <tr>
+                            <td>Bantuan Pendidikan</td>
+                            <td>50 anak</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div id="sdgs-content" class="infographic-content">
+                    <h3>SDGs Desa Wani Tiga</h3>
+                    <p style="margin-top: 15px;">Desa Wani Tiga berkomitmen untuk mencapai Tujuan Pembangunan Berkelanjutan (SDGs) Desa dengan fokus pada:</p>
+                    
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Desa tanpa kemiskinan</li>
+                        <li>Desa tanpa kelaparan</li>
+                        <li>Desa sehat dan sejahtera</li>
+                        <li>Pendidikan desa berkualitas</li>
+                        <li>Keterlibatan perempuan desa</li>
+                        <li>Desa layak air bersih dan sanitasi</li>
+                        <li>Desa berenergi bersih dan terbarukan</li>
+                    </ul>
+                    
+                    <h4 style="margin-top: 30px;">Pencapaian Tahun 2023</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>100% akses air bersih</li>
+                        <li>90% akses sanitasi layak</li>
+                        <li>Pembangunan 2 km jalan desa</li>
+                        <li>Peningkatan kapasitas 5 UMKM</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Layanan Section -->
+        <section class="main-section" id="layanan-section">
+            <div class="container">
+                <h2 class="section-title animate">Layanan Desa</h2>
+                
+                <div class="services-grid">
+                    <div class="service-card animate" style="animation-delay: 0.2s;">
+                        <div class="service-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Surat Keterangan Tidak Mampu (SKTM)</h3>
+                        <p>Layanan pembuatan surat keterangan tidak mampu untuk keperluan sekolah, pengobatan, dll.</p>
+                        <button class="btn open-modal" data-modal="sktm-modal">Ajukan Permohonan</button>
+                    </div>
+                    
+                    <div class="service-card animate" style="animation-delay: 0.3s;">
+                        <div class="service-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <h3>Pembuatan KTP</h3>
+                        <p>Layanan pendaftaran dan perpanjangan Kartu Tanda Penduduk (KTP) elektronik.</p>
+                        <button class="btn open-modal" data-modal="ktp-modal">Ajukan Permohonan</button>
+                    </div>
+                    
+                    <div class="service-card animate" style="animation-delay: 0.4s;">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Pembuatan KK</h3>
+                        <p>Layanan pembuatan dan perubahan Kartu Keluarga (KK).</p>
+                        <button class="btn open-modal" data-modal="kk-modal">Ajukan Permohonan</button>
+                    </div>
+                    
+                    <div class="service-card animate" style="animation-delay: 0.5s;">
+                        <div class="service-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Surat Keterangan Domisili</h3>
+                        <p>Layanan pembuatan surat keterangan domisili untuk berbagai keperluan.</p>
+                        <button class="btn open-modal" data-modal="domisili-modal">Ajukan Permohonan</button>
+                    </div>
+                    
+                    <div class="service-card animate" style="animation-delay: 0.6s;">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Surat Keterangan Usaha</h3>
+                        <p>Layanan pembuatan surat keterangan usaha untuk keperluan perizinan.</p>
+                        <button class="btn open-modal" data-modal="usaha-modal">Ajukan Permohonan</button>
+                    </div>
+                    
+                    <div class="service-card animate" style="animation-delay: 0.7s;">
+                        <div class="service-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Surat Pengantar Nikah</h3>
+                        <p>Layanan pembuatan surat pengantar untuk keperluan pernikahan.</p>
+                        <button class="btn open-modal" data-modal="nikah-modal">Ajukan Permohonan</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-envelope"></i> Email: desa.wanitiga@xxx.id</p>
+                    <p><i class="fas fa-phone"></i> Telepon: (0271) 123456</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: 0812-3456-7890</p>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Alamat Kantor</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Raya Wani Tiga No. 1</p>
+                    <p>Kecamatan XXX, Kabupaten XXX</p>
+                    <p>Provinsi XXX, Kode Pos 12345</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Jam Layanan</h3>
+                    <p><i class="far fa-clock"></i> Senin - Kamis: 08.00 - 14.00 WIB</p>
+                    <p><i class="far fa-clock"></i> Jumat: 08.00 - 11.00 WIB</p>
+                    <p><i class="far fa-clock"></i> Sabtu - Minggu: Libur</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Pemerintah Desa Wani Tiga. Semua Hak Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Complaint Button -->
+    <a href="#" class="complaint-button" id="complaintBtn">
+        <i class="fas fa-comment-dots"></i>
+        <span>!</span>
+    </a>
+    
+    <!-- Back to Top Button -->
+    <a href="#beranda" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <!-- Complaint Modal -->
+    <div class="modal" id="complaintModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Formulir Pengaduan</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" placeholder="Masukkan nama lengkap">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nik">NIK</label>
+                        <input type="text" id="nik" placeholder="Masukkan NIK">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Masukkan email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Nomor Telepon</label>
+                        <input type="tel" id="phone" placeholder="Masukkan nomor telepon">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subjek Pengaduan</label>
+                        <select id="subject">
+                            <option value="">Pilih subjek pengaduan</option>
+                            <option value="infrastruktur">Infrastruktur Desa</option>
+                            <option value="pelayanan">Pelayanan Publik</option>
+                            <option value="sosial">Masalah Sosial</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Isi Pengaduan</label>
+                        <textarea id="message" placeholder="Jelaskan pengaduan Anda secara detail"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn">Kirim Pengaduan</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Service Modals SKTM -->
+    <div class="modal" id="sktm-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Permohonan SKTM</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="sktm-name">Nama Lengkap</label>
+                        <input type="text" id="sktm-name" placeholder="Masukkan nama lengkap">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sktm-nik">NIK</label>
+                        <input type="text" id="sktm-nik" placeholder="Masukkan NIK">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sktm-address">Alamat Lengkap</label>
+                        <textarea id="sktm-address" placeholder="Masukkan alamat lengkap"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sktm-purpose">Tujuan Pembuatan</label>
+                        <select id="sktm-purpose">
+                            <option value="">Pilih tujuan pembuatan</option>
+                            <option value="sekolah">Pendaftaran Sekolah</option>
+                            <option value="pengobatan">Bantuan Pengobatan</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Upload Dokumen Pendukung</label>
+                        <input type="file" style="padding: 5px;">
+                        <small style="display: block; margin-top: 5px; color: var(--gray);">(KK, KTP, atau dokumen pendukung lainnya)</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn">Kirim Permohonan</button>
+            </div>
+        </div>
+    </div>
+    
+<!-- Service Modals KTP -->
+<div class="modal" id="ktp-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Permohonan Pembuatan KTP</h3>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="ktp-name">Nama Lengkap</label>
+                    <input type="text" id="ktp-name" placeholder="Masukkan nama lengkap">
+                </div>
+
+                <div class="form-group">
+                    <label for="ktp-nik">NIK</label>
+                    <input type="text" id="ktp-nik" placeholder="Masukkan NIK">
+                </div>
+
+                <div class="form-group">
+                    <label for="ktp-birth">Tempat & Tanggal Lahir</label>
+                    <input type="text" id="ktp-birth" placeholder="Contoh: Bandung, 01 Januari 2000">
+                </div>
+
+                <div class="form-group">
+                    <label for="ktp-address">Alamat Lengkap</label>
+                    <textarea id="ktp-address" placeholder="Masukkan alamat lengkap"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="ktp-gender">Jenis Kelamin</label>
+                    <select id="ktp-gender">
+                        <option value="">Pilih jenis kelamin</option>
+                        <option value="laki-laki">Laki-laki</option>
+                        <option value="perempuan">Perempuan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ktp-status">Status Perkawinan</label>
+                    <select id="ktp-status">
+                        <option value="">Pilih status</option>
+                        <option value="belum">Belum Kawin</option>
+                        <option value="kawin">Kawin</option>
+                        <option value="cerai-hidup">Cerai Hidup</option>
+                        <option value="cerai-mati">Cerai Mati</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Dokumen Pendukung</label>
+                    <input type="file" style="padding: 5px;">
+                    <small style="display: block; margin-top: 5px; color: var(--gray);">(Akta Kelahiran, Kartu Keluarga, KTP Lama jika ada)</small>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn">Kirim Permohonan</button>
+        </div>
+    </div>
+</div>
+
+<!-- Service Modals KK -->
+<div class="modal" id="kk-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Permohonan Pembuatan Kartu Keluarga (KK)</h3>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="kk-head-name">Nama Kepala Keluarga</label>
+                    <input type="text" id="kk-head-name" placeholder="Masukkan nama kepala keluarga">
+                </div>
+
+                <div class="form-group">
+                    <label for="kk-head-nik">NIK Kepala Keluarga</label>
+                    <input type="text" id="kk-head-nik" placeholder="Masukkan NIK kepala keluarga">
+                </div>
+
+                <div class="form-group">
+                    <label for="kk-address">Alamat Lengkap</label>
+                    <textarea id="kk-address" placeholder="Masukkan alamat lengkap"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="kk-reason">Alasan Pembuatan KK</label>
+                    <select id="kk-reason">
+                        <option value="">Pilih alasan pembuatan</option>
+                        <option value="baru">Pembuatan KK Baru</option>
+                        <option value="penambahan">Penambahan Anggota Keluarga</option>
+                        <option value="hilang">Penggantian Karena Hilang/Rusak</option>
+                        <option value="perubahan">Perubahan Data</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Dokumen Pendukung</label>
+                    <input type="file" style="padding: 5px;">
+                    <small style="display: block; margin-top: 5px; color: var(--gray);">(Akta Kelahiran, Surat Nikah, KK Lama, dsb)</small>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn">Kirim Permohonan</button>
+        </div>
+    </div>
+</div>
+
+<!-- Service Modals Surat Keterangan Domisili -->
+<div class="modal" id="domisili-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Permohonan Surat Keterangan Domisili</h3>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="domisili-name">Nama Lengkap</label>
+                    <input type="text" id="domisili-name" placeholder="Masukkan nama lengkap">
+                </div>
+
+                <div class="form-group">
+                    <label for="domisili-nik">NIK</label>
+                    <input type="text" id="domisili-nik" placeholder="Masukkan NIK">
+                </div>
+
+                <div class="form-group">
+                    <label for="domisili-address">Alamat Domisili</label>
+                    <textarea id="domisili-address" placeholder="Masukkan alamat tempat tinggal saat ini"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="domisili-duration">Lama Tinggal</label>
+                    <input type="text" id="domisili-duration" placeholder="Contoh: 3 tahun">
+                </div>
+
+                <div class="form-group">
+                    <label for="domisili-purpose">Alasan Permohonan</label>
+                    <select id="domisili-purpose">
+                        <option value="">Pilih alasan permohonan</option>
+                        <option value="kerja">Keperluan Pekerjaan</option>
+                        <option value="sekolah">Keperluan Sekolah</option>
+                        <option value="administrasi">Administrasi Kependudukan</option>
+                        <option value="lainnya">Lainnya</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Dokumen Pendukung</label>
+                    <input type="file" style="padding: 5px;">
+                    <small style="display: block; margin-top: 5px; color: var(--gray);">(KTP, KK, Surat Pengantar RT/RW)</small>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn">Kirim Permohonan</button>
+        </div>
+    </div>
+</div>
+
+<!-- Service Modals Surat Keterangan Usaha -->
+<div class="modal" id="sku-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Permohonan Surat Keterangan Usaha</h3>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="sku-name">Nama Pemohon</label>
+                    <input type="text" id="sku-name" placeholder="Masukkan nama pemohon">
+                </div>
+
+                <div class="form-group">
+                    <label for="sku-nik">NIK</label>
+                    <input type="text" id="sku-nik" placeholder="Masukkan NIK">
+                </div>
+
+                <div class="form-group">
+                    <label for="sku-business-name">Nama Usaha</label>
+                    <input type="text" id="sku-business-name" placeholder="Masukkan nama usaha">
+                </div>
+
+                <div class="form-group">
+                    <label for="sku-business-type">Jenis Usaha</label>
+                    <input type="text" id="sku-business-type" placeholder="Contoh: Warung Kelontong, Laundry, dll">
+                </div>
+
+                <div class="form-group">
+                    <label for="sku-address">Alamat Usaha</label>
+                    <textarea id="sku-address" placeholder="Masukkan alamat lengkap usaha"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="sku-duration">Lama Usaha Berjalan</label>
+                    <input type="text" id="sku-duration" placeholder="Contoh: 2 tahun">
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Dokumen Pendukung</label>
+                    <input type="file" style="padding: 5px;">
+                    <small style="display: block; margin-top: 5px; color: var(--gray);">(KTP, KK, Surat Pengantar RT/RW, dll)</small>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn">Kirim Permohonan</button>
+        </div>
+    </div>
+</div>
+
+<!-- Service Modals Surat Pengantar Nikah -->
+<div class="modal" id="nikah-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Permohonan Surat Pengantar Nikah</h3>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="nikah-name">Nama Lengkap</label>
+                    <input type="text" id="nikah-name" placeholder="Masukkan nama lengkap">
+                </div>
+
+                <div class="form-group">
+                    <label for="nikah-nik">NIK</label>
+                    <input type="text" id="nikah-nik" placeholder="Masukkan NIK">
+                </div>
+
+                <div class="form-group">
+                    <label for="nikah-birth">Tempat & Tanggal Lahir</label>
+                    <input type="text" id="nikah-birth" placeholder="Contoh: Bandung, 12 Februari 1999">
+                </div>
+
+                <div class="form-group">
+                    <label for="nikah-gender">Jenis Kelamin</label>
+                    <select id="nikah-gender">
+                        <option value="">Pilih jenis kelamin</option>
+                        <option value="laki-laki">Laki-laki</option>
+                        <option value="perempuan">Perempuan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="nikah-religion">Agama</label>
+                    <select id="nikah-religion">
+                        <option value="">Pilih agama</option>
+                        <option value="islam">Islam</option>
+                        <option value="kristen">Kristen</option>
+                        <option value="katolik">Katolik</option>
+                        <option value="hindu">Hindu</option>
+                        <option value="buddha">Buddha</option>
+                        <option value="konghucu">Konghucu</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="nikah-status">Status Perkawinan</label>
+                    <select id="nikah-status">
+                        <option value="">Pilih status</option>
+                        <option value="belum">Belum Pernah Menikah</option>
+                        <option value="cerai-hidup">Cerai Hidup</option>
+                        <option value="cerai-mati">Cerai Mati</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="nikah-partner">Nama Pasangan</label>
+                    <input type="text" id="nikah-partner" placeholder="Masukkan nama pasangan">
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Dokumen Pendukung</label>
+                    <input type="file" style="padding: 5px;">
+                    <small style="display: block; margin-top: 5px; color: var(--gray);">(KTP, KK, Akta Kelahiran, Surat Keterangan Belum Menikah atau Cerai, dll)</small>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn">Kirim Permohonan</button>
+        </div>
+    </div>
+</div>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Navigation Handling
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('nav ul li a').forEach(lnk => {
+                    lnk.classList.remove('active');
+                });
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Hide all sections
+                document.querySelectorAll('.main-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show the corresponding section
+                const targetId = this.getAttribute('href');
+                if (targetId === '#beranda') {
+                    // Beranda shows all sections
+                    document.querySelectorAll('.main-section').forEach(section => {
+                        section.classList.add('active');
+                    });
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    const targetSection = document.querySelector(`${targetId}-section`);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // Initialize - show beranda by default
+        document.querySelector('nav ul li a[href="#beranda"]').click();
+        
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        // Infographic Tabs
+        const infographicTabs = document.querySelectorAll('.infographic-tab');
+        const infographicContents = document.querySelectorAll('.infographic-content');
+        
+        infographicTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                
+                // Update active tab
+                infographicTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                infographicContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(`${tabId}-content`).classList.add('active');
+            });
+        });
+        
+        // Modal Handling
+        const complaintBtn = document.getElementById('complaintBtn');
+        const complaintModal = document.getElementById('complaintModal');
+        const closeModalBtns = document.querySelectorAll('.close-modal');
+        const openModalBtns = document.querySelectorAll('.open-modal');
+        
+        complaintBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            complaintModal.style.display = 'block';
+            setTimeout(() => {
+                complaintModal.classList.add('active');
+            }, 10);
+        });
+        
+        openModalBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const modalId = btn.getAttribute('data-modal');
+                const modal = document.getElementById(modalId);
+                modal.style.display = 'block';
+                setTimeout(() => {
+                    modal.classList.add('active');
+                }, 10);
+            });
+        });
+        
+        closeModalBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const modal = btn.closest('.modal');
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            });
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('active');
+                setTimeout(() => {
+                    e.target.style.display = 'none';
+                }, 300);
+            }
+        });
+        
+        // Animation on Scroll
+        const animateElements = document.querySelectorAll('.animate');
+        
+        const animateOnScroll = () => {
+            animateElements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    const delay = element.style.animationDelay || '0s';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
